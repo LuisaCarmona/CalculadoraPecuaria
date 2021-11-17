@@ -7,8 +7,6 @@ let response = {
 exports.create = function(req, res){
     let estanque = new Estanque({
         nombre: req.body.nombre,
-        fecha_siembra: req.body.fecha_siembra,
-        cantidad_siembra: req.body.cantidad_siembra,
     })
     estanque.save(function(err){
         if(err){
@@ -23,11 +21,6 @@ exports.create = function(req, res){
         res.json(response)
     })
 }
-
-
-
-
-
 
 exports.find = function(req, res) {
     Estanque.find(function(err, estanques) {
@@ -44,11 +37,6 @@ exports.findOne = function(req, res) {
 exports.update = function(req, res) {
     let estanque = {
         nombre: req.body.nombre,
-        fecha_siembra: req.body.fecha_siembra,
-        cantidad_siembra: req.body.cantidad_siembra,
-
-
-
     }
 
     Estanque.findByIdAndUpdate(req.params.id, { $set: estanque }, function(err) {

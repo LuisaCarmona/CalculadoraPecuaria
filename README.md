@@ -1,5 +1,5 @@
 # CalculadoraPecuaria
-Iniciativa para mejorar el control financiero de los productores pecuarios por medio de una calculadora donde los usuarios tengan acceso a su perfil propio y puedan optimizar su trabajo así como también poder tener un historial.
+Iniciativa para el mejoraramiento del control financiero de los productores pecuarios, por medio de una calculadora en la cual los usuarios tengan acceso a su perfil y puedan optimizar su trabajo y también poder tener un historial de lo realizado.
 
 DesarrolloWeb2 - Equipo 4
 
@@ -10,6 +10,6 @@ scrum master:
 Sandro David Navarro S.
 
 development team:
-Angie
+Angie González
 Jorge
 Juan Camilo 

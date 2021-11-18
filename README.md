@@ -4,7 +4,7 @@ DesarrolloWeb2 - Equipo 4
 
 Luisa Fernanda Carmona
 
-Sandro
+Sandro David Navarro S.
 
 Juan Camilo
 

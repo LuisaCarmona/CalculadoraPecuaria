@@ -3,13 +3,13 @@ Iniciativa para el mejoraramiento del control financiero de los productores pecu
 
 DesarrolloWeb2 - Equipo 4
 
-product backlog:
+product owner:
 Luisa Fernanda Carmona
 
-scrum master:
+Scrum Master:
 Sandro David Navarro S.
 
-development team:
+Development Team:
 Angie González
 Jorge
 Juan Camilo 

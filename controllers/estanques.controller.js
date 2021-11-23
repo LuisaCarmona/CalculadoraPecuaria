@@ -10,20 +10,24 @@ let response = {
 exports.create = function (req, res) {
   let estanque = new Estanque({
     nombre: req.body.nombre,
+    fecha_inicial: req.body.fecha_inicial,
+    costo_peces: req.body.costo_peces,
+    fecha_final: req.body.fecha_final,
+    venta_peces: req.body.venta_peces
   });
 
   estanque.save(function (err) {
     if (err) {
-      console.log = false;
-      (response.exito = false),
-        (response.msg = "Error al guardar el estanque"),
-        res.json(response);
+      console.error = (err);
+      response.exito = false,
+      response.msg = "Error al guardar el estanque"
+      res.json(response)
       return;
     }
 
-    (response.exito = true),
-      (response.msg = "El estanque se guardo correctamente"),
-      res.json(response);
+    response.exito = true,
+    response.msg = "El estanque se guardo correctamente"
+    res.json(response)
   });
 };
 
@@ -34,7 +38,7 @@ exports.find = function (req, res) {
 };
 
 exports.findOne = function (req, res) {
-  Estanque.findOne({ _id: req.params.id }, function (err, eestanque) {
+  Estanque.findOne({ _id: req.params.id }, function (err, estanque) {
     res.json(estanque);
   });
 };
@@ -42,6 +46,10 @@ exports.findOne = function (req, res) {
 exports.update = function (req, res) {
   let estanque = {
     nombre: req.body.nombre,
+    fecha_inicial: req.body.fecha_inicial,
+    costo_peces: req.body.costo_peces,
+    fecha_final: req.body.fecha_final,
+    venta_peces: req.body.venta_peces
   };
 
   Estanque.findByIdAndUpdate(req.params.id, { $set: estanque }, function (err) {

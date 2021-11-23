@@ -4,6 +4,8 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var database = require("./config/database");
+var auth = require('./auth/main_auth');
+var cors = require('cors');
 
 // variables para los router
 var estanquesRouter = require("./routes/estanques.router");
@@ -21,8 +23,11 @@ app.use(express.static(path.join(__dirname, "public")));
 database.mongoConnect();
 
 //Routers:
-app.use("/estanques", estanquesRouter);
 app.use("/productores", productoresRouter);
+
+app.use(auth);
+
+app.use("/estanques", estanquesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

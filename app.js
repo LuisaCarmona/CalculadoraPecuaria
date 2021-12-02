@@ -8,7 +8,7 @@ var auth = require("./auth/main_auth");
 var cors = require("cors");
 
 // variables para los router
-var estanquesRouter = require("./routes/estanques.router");
+var estanqueRouter = require("./routes/estanque.router");
 var productoresRouter = require("./routes/productores.router");
 
 var app = express();
@@ -28,8 +28,9 @@ database.mongoConnect();
 app.use("/productores", productoresRouter);
 
 //app.use(auth);
+app.use(auth);
 
-app.use("/estanques", estanquesRouter);
+app.use("/estanque", estanqueRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

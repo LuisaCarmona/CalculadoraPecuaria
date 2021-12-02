@@ -3,7 +3,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const EstanquesSchema = new Schema({
+const EstanqueSchema = new Schema({
   nombre: { type: String, required: true, max: 60 },
   fecha_inicial: { type: String, required: true, max: 60 },
   costo_peces: { type: String, required: false, max: 60 },
@@ -11,4 +11,4 @@ const EstanquesSchema = new Schema({
   venta_peces: { type: String, required: false, max: 60 },
 });
 
-module.esports = mongoose.model("estanques", EstanquesSchema);
+module.esports = mongoose.model("estanque", EstanqueSchema);

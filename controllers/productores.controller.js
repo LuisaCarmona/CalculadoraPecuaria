@@ -4,6 +4,35 @@ const productorModel = require("../models/productores.model");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 
+// método para el login del usuario
+exports.login = function (req, res, next) {
+  let hashedpass = crypto
+    .createHash("sha512")
+    .update(req.body.pass)
+    .digest("hex");
+
+  productorModel.findOne(
+    { usuario: req.body.usuario, password: hashedpass },
+    function (err, usuario) {
+      let response = {
+        token: null,
+      };
+
+      if (usuario !== null) {
+        response.token = jwt.sign(
+          {
+            id: usuario._id,
+            usuario: usuario.usuario,
+          },
+          "__secret__",
+          { expiresIn: "12h" }
+        );
+      }
+      res.json(response);
+    }
+  );
+};
+
 // método para crear un productor nuevo
 exports.create = function (req, res) {
   let productor = new productorModel({
@@ -28,35 +57,6 @@ exports.create = function (req, res) {
     response.message = "productor registrado correctamente";
     res.json(response);
   });
-};
-
-// método para el login del usuario
-exports.login = function (req, res, next) {
-  let hashedpass = crypto
-    .createHash("sha512")
-    .update(req.body.pass)
-    .digest("hex");
-
-    productorModel.findOne(
-    { usuario: req.body.email, password: hashedpass },
-    function (err, usuario) {
-      let response = {
-        token: null,
-      };
-
-      if (usuario !== null) {
-        response.token = jwt.sign(
-          {
-            id: usuario._id,
-            usuario: usuario.usuario,
-          },
-          "__secret__",
-          { expiresIn: '12h' }
-        );
-      }
-      res.json(response);
-    }
-  );
 };
 
 // método para hacer lista de todos los productores

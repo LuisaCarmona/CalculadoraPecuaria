@@ -1,7 +1,6 @@
 // se crea el controlador para los estanques
 
-const Estanque = require("../models/estanques.model");
-
+const Estanque = require("../models/estanque.model");
 let response = {
   msg: "",
   exito: false,
@@ -13,21 +12,20 @@ exports.create = function (req, res) {
     fecha_inicial: req.body.fecha_inicial,
     costo_peces: req.body.costo_peces,
     fecha_final: req.body.fecha_final,
-    venta_peces: req.body.venta_peces
+    venta_peces: req.body.venta_peces,
   });
 
   estanque.save(function (err) {
     if (err) {
-      console.error = (err);
-      response.exito = false,
-      response.msg = "Error al guardar el estanque"
-      res.json(response)
+      console.error(err),
+        (response.exito = false),
+        (response.msg = "Error al guardar");
+      res.json(response);
       return;
     }
 
-    response.exito = true,
-    response.msg = "El estanque se guardo correctamente"
-    res.json(response)
+    (response.exito = true), (response.msg = "Se guardó correctamente");
+    res.json(response);
   });
 };
 
@@ -49,19 +47,19 @@ exports.update = function (req, res) {
     fecha_inicial: req.body.fecha_inicial,
     costo_peces: req.body.costo_peces,
     fecha_final: req.body.fecha_final,
-    venta_peces: req.body.venta_peces
+    venta_peces: req.body.venta_peces,
   };
 
   Estanque.findByIdAndUpdate(req.params.id, { $set: estanque }, function (err) {
     if (err) {
       console.error(err),
         (response.exito = false),
-        (response.msg = "Error al modificar el estanque"),
-        res.json(response);
+        (response.msg = "Error al modificar ");
+      res.json(response);
       return;
     }
-    response.exito = true;
-    response.msg = "El estanque se modificó correctamente";
+
+    (response.exito = true), (response.msg = " modifico correctamente");
     res.json(response);
   });
 };
@@ -71,12 +69,13 @@ exports.remove = function (req, res) {
     if (err) {
       console.error(err),
         (response.exito = false),
-        (response.msg = "Error al eliminar el estanque"),
-        res.json(response);
+        (response.msg = "Error al eliminar el estanque");
+      res.json(response);
       return;
     }
-    response.exito = true;
-    response.msg = "El estanque se eliminó correctamente";
+
+    (response.exito = true),
+      (response.msg = "El estanque fué eliminado correctamente");
     res.json(response);
   });
 };

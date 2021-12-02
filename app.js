@@ -4,8 +4,8 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var database = require("./config/database");
-var auth = require('./auth/main_auth');
-var cors = require('cors');
+var auth = require("./auth/main_auth");
+var cors = require("cors");
 
 // variables para los router
 var estanquesRouter = require("./routes/estanques.router");
@@ -19,13 +19,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(cors());
+
 //Mongo connection:
 database.mongoConnect();
 
 //Routers:
 app.use("/productores", productoresRouter);
 
-app.use(auth);
+//app.use(auth);
 
 app.use("/estanques", estanquesRouter);
 

@@ -11,4 +11,4 @@ const EstanqueSchema = new Schema({
   venta_peces: { type: String, required: false, max: 60 },
 });
 
-module.esports = mongoose.model("estanque", EstanqueSchema);
+module.exports = mongoose.model("estanque", EstanqueSchema);
